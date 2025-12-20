@@ -36,7 +36,7 @@ const AppNavbar = () => {
   ];
 
   return (
-    <nav className="w-full max-w-screen-xl mx-auto py-4">
+    <nav className="w-full max-w-screen-xl mx-auto py-4 shadow-2xl">
       <div className="flex items-center justify-between">
         <Link href={"/"}>
           <Codesandbox />
@@ -73,8 +73,16 @@ const AppNavbar = () => {
               <CircleUserRound />
             </PopoverTrigger>
             <PopoverContent className="flex flex-col gap-4 m-4">
-              <Button variant="outline">CREATE ACCOUNT</Button>
-              <Button variant="outline">SIGN IN</Button>
+              <Link href="/auth?mode=register">
+                <Button className="w-full" variant="outline">
+                  Create account
+                </Button>
+              </Link>
+              <Link href="/auth?mode=login">
+                <Button className="w-full" variant="outline">
+                  Sign in
+                </Button>
+              </Link>
             </PopoverContent>
           </Popover>
         </div>
