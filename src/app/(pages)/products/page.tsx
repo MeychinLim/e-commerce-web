@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { products } from "@/static/products";
-import ProductSmallCard from "@/app/components/Product/ProductSmallCard";
+import ProductSmallCard from "@/app/components/product/ProductSmallCard";
 import { Button } from "@/components/ui/button";
 import { ArrowDownAZ, ArrowDownZA, SearchIcon } from "lucide-react";
 import { SORT_BY_ASC, SORT_BY_DESC } from "@/constants/constant";

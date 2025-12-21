@@ -1,36 +1,15 @@
 import Image from "next/image";
 import SectionTitle from "./components/website/SectionTitle";
 import { products } from "@/static/products";
-import ProductSmallCard from "./components/Product/ProductSmallCard";
-import { UserCircle2 } from "lucide-react";
-import ProductLargeCard from "./components/Product/ProductLargeCard";
-
-const styles = `
-  .home-bg::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url('/images/home-bg-bamboo-plants.png');
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    opacity: 0.50;
-    z-index: 0;
-  }
-`;
+import ProductLargeCard from "./components/product/ProductLargeCard";
+import CustomerReviewCard from "./components/customer/CustomerReviewCard";
+import { customerReviews } from "@/static/customer";
+import CustomerReviewCardCarousel from "./components/customer/CustomerReviewCardCarousel";
+import ProductCardCarousel from "./components/product/ProductCardCarousel";
 
 export default function Home() {
   return (
-    <div
-      className="font-[family-name:var(--font-geist-sans)] min-h-screen relative home-bg"
-      // style={{
-      //   backgroundImage: "url('/images/home_background.png')",
-      // }}
-    >
-      <style>{styles}</style>
+    <div className="font-[family-name:var(--font-geist-sans)] min-h-screen relative home-bg">
       <div className="mt-40 mb-20 mx-20 relative z-10">
         <main className="flex flex-col w-full">
           <div className="grid grid-cols-3 justify-between gap-10">
@@ -50,18 +29,7 @@ export default function Home() {
                 Explore
               </button>
 
-              <div>
-                <div className="w-80 bg-white/10 backdrop-blur-lg border border-white/20 rounded-4xl shadow-xl p-6 my-10">
-                  <div className="flex items-center gap-2 mb-4">
-                    <UserCircle2 width={30} height={30} />
-                    <span className="text-lg font-semibold">Mayuko Chan</span>
-                  </div>
-                  <p className="text-sm">
-                    Good service, affordable price, friendly, healthy plants.
-                    Thank you. {`<3`}{" "}
-                  </p>
-                </div>
-              </div>
+              <CustomerReviewCard customerReview={customerReviews[0]} />
             </div>
 
             <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-4xl shadow-xl p-10 h-96 flex flex-col justify-end">
@@ -89,34 +57,20 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="">
+          <div>
             <SectionTitle title="Our Trendy Plants" />
-            <div>
-              <ProductLargeCard product={products[0]} />
-            </div>
+            <ProductLargeCard product={products[0]} />
 
             <SectionTitle title="Our Top Selling" />
-            <div className="grid grid-cols-3 gap-6">
-              {products.map((product) => (
-                <div key={product.id}>
-                  <ProductSmallCard product={product} />
-                </div>
-              ))}
-            </div>
-
-            <SectionTitle title="Customer Review" />
-            <div className="grid grid-cols-3 gap-6">
-              {products.map((product) => (
-                <div key={product.id}>
-                  <ProductSmallCard product={product} />
-                </div>
-              ))}
-            </div>
+            {products && <ProductCardCarousel products={products} />}
 
             <SectionTitle title="Our Best O2" />
-            <div>
-              <ProductLargeCard product={products[4]} />
-            </div>
+            <ProductLargeCard product={products[4]} />
+
+            <SectionTitle title="Customer Review" />
+            {customerReviews && (
+              <CustomerReviewCardCarousel customerReviews={customerReviews} />
+            )}
           </div>
         </main>
         {/* <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center"></footer> */}
