@@ -157,7 +157,12 @@ const AppFooter: React.FC = () => {
           <span>
             © {new Date().getFullYear()} Plant & Petal — All rights reserved.
           </span>
-          <span>Built with care · Terms · Privacy</span>
+          <span>
+            Built with care · Terms ·{" "}
+            <Link href="/privacy-policy" className="hover:underline">
+              Privacy
+            </Link>
+          </span>
         </div>
       </div>
     </footer>
