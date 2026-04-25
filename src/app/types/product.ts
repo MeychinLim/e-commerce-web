@@ -22,7 +22,6 @@ export type ProductType = {
   sold: number;
   rating: number;
   review: number;
-  customize: boolean;
   colors: string[];
   availableColors: string[];
   limitedColors: string[];

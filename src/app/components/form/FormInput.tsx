@@ -48,9 +48,10 @@ const FormInput: React.FC<FormInputProps> = ({
               fieldState.error
                 ? `${name}-fieldState.`
                 : helperText
-                ? `${name}-help`
-                : undefined
+                  ? `${name}-help`
+                  : undefined
             }
+            className="rounded-2xl"
             onChange={(e) => field.onChange(e.target.value)}
           />
           {helperText && !fieldState.error ? (

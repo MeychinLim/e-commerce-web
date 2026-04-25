@@ -24,7 +24,6 @@ const Page = () => {
             <InputGroupInput
               value={name}
               placeholder="Search Product Name"
-              className="rounded-2xl"
               onChange={(e) => setName(e.target.value)}
             />
             <InputGroupAddon>

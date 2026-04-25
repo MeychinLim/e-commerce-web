@@ -51,7 +51,7 @@ const AppFooter: React.FC = () => {
                 fill
                 style={{ objectFit: "cover" }}
                 sizes="48px"
-                onError={() => {}}
+                onError={() => { }}
               />
             </div>
             <div>
