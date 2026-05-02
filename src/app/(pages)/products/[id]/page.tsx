@@ -3,27 +3,20 @@
 import React, { useState, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  Minus,
-  Plus,
-  Star,
-  ImageOff,
-} from "lucide-react";
+import { Star, ImageOff } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { products } from "@/static/products";
-import { useShopStore } from "@/zustands/shopStore";
-import type { ProductType } from "@/app/types/product";
 
 interface PageProps {
   params: Promise<{ id: string }>;
 }
 
 const Page: React.FC<PageProps> = ({ params }) => {
-  const [selectedQuantity, setSelectedQuantity] = useState(1);
+  // const [selectedQuantity, setSelectedQuantity] = useState(1);
   // const [isFavorite, setIsFavorite] = useState(false);
-  const { cart, setCart } = useShopStore();
+  // const { cart, setCart } = useShopStore();
   const [paramsData, setParamsData] = useState<{ id: string } | null>(null);
 
   React.useEffect(() => {
@@ -52,12 +45,12 @@ const Page: React.FC<PageProps> = ({ params }) => {
       : product.price;
   }, [product, effectiveDiscount]);
 
-  const cartItem = useMemo(
-    () =>
-      cart?.items.find((item: ProductType) => item.id === product?.id) ||
-      undefined,
-    [cart, product],
-  );
+  // const cartItem = useMemo(
+  //   () =>
+  //     cart?.items.find((item: CartItemType) => item.id === product?.id) ||
+  //     undefined,
+  //   [cart, product],
+  // );
 
   if (!paramsData || !product) {
     return (
@@ -70,37 +63,40 @@ const Page: React.FC<PageProps> = ({ params }) => {
     );
   }
 
-  const handleAddToCart = () => {
-    if (!product || !cart) return;
+  // const handleAddToCart = () => {
+  //   if (!product || !cart) return;
 
-    const existingItem = cart.items.find(
-      (item: ProductType) => item.id === product.id,
-    );
+  //   const existingItem = cart.items.find(
+  //     (item: CartItemType) => item.id === product.id,
+  //   );
+  //   console.log("existingItem: ", existingItem);
 
-    const updatedItems = existingItem
-      ? cart.items.map((item: ProductType) =>
-        item.id === product.id
-          ? {
-            ...item,
-            quantity: (item.quantity || 0) + selectedQuantity,
-          }
-          : item,
-      )
-      : [
-        ...cart.items,
-        {
-          ...product,
-          quantity: selectedQuantity,
-        },
-      ];
+  //   const updatedItems = existingItem
+  //     ? cart.items.map((item: CartItemType) =>
+  //         item.id === product.id
+  //           ? {
+  //               ...item,
+  //               quantity: (item.quantity || 0) + selectedQuantity,
+  //             }
+  //           : item,
+  //       )
+  //     : [
+  //         ...cart.items,
+  //         {
+  //           ...product,
+  //           quantity: selectedQuantity,
+  //         },
+  //       ];
 
-    setCart({
-      ...cart,
-      items: updatedItems,
-    });
+  //   console.log("updatedItems: ", updatedItems);
 
-    setSelectedQuantity(1);
-  };
+  //   setCart({
+  //     ...cart,
+  //     items: updatedItems,
+  //   });
+
+  //   setSelectedQuantity(1);
+  // };
 
   // const handleUpdateCartQuantity = (newQuantity: number) => {
   //   if (!cart || newQuantity < 0) return;
@@ -127,7 +123,7 @@ const Page: React.FC<PageProps> = ({ params }) => {
   // };
 
   const isInStock = product.quantity && product.quantity > 0;
-  const cartQuantity = cartItem?.quantity || 0;
+  // const cartQuantity = cartItem?.quantity || 0;
   const hasDiscount =
     (product.onSale &&
       product.discountPercentage &&
@@ -255,7 +251,7 @@ const Page: React.FC<PageProps> = ({ params }) => {
                   Specifications
                 </CardTitle>
 
-                <div>
+                {/* <div>
                   {cartQuantity <= 0 ? (
                     <Button
                       className="rounded-2xl font-bold"
@@ -298,7 +294,7 @@ const Page: React.FC<PageProps> = ({ params }) => {
                       </div>
                     </div>
                   )}
-                </div>
+                </div> */}
               </div>
             </CardHeader>
             <CardContent className="flex flex-col gap-3 text-sm">
@@ -310,9 +306,7 @@ const Page: React.FC<PageProps> = ({ params }) => {
               )}
               {product.quantity !== undefined && (
                 <div className="flex justify-between">
-                  <span className="font-semibold">
-                    Available:
-                  </span>
+                  <span className="font-semibold">Available:</span>
                   <span className="font-bold">{product.quantity} units</span>
                 </div>
               )}

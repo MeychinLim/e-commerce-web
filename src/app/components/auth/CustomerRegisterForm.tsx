@@ -81,7 +81,7 @@ const CustomerRegisterForm = () => {
           <Button
             variant="outline"
             type="submit"
-            // onClick={() => form.handleSubmit(onSubmit())}
+          // onClick={() => form.handleSubmit(onSubmit())}
           >
             Register
           </Button>

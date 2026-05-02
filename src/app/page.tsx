@@ -32,7 +32,7 @@ export default function Home() {
               <CustomerReviewCard customerReview={customerReviews[0]} />
             </div>
 
-            <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-4xl shadow-xl p-10 h-96 flex flex-col justify-end">
+            <div className="bg-white/10 backdrop-blur-lg border border-white/20 hover:border-white/40 rounded-4xl shadow-xl p-10 h-96 flex flex-col justify-end">
               <div className="flex items-center h-64">
                 <Image
                   src="/images/home-plant-3.png"
