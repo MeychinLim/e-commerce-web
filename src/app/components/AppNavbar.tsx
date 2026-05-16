@@ -25,10 +25,10 @@ const AppNavbar = () => {
       label: "Products",
       href: "/products",
     },
-    // {
-    //   label: "Sales",
-    //   href: "/sales",
-    // },
+    {
+      label: "About Us",
+      href: "/about",
+    },
     // {
     //   label: "Customize",
     //   href: "/customize",
